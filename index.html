@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eid Mubarak</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #d4af37;
+            --secondary: #1a1a1a;
+            --accent: #ffd700;
+            --dark: #000000;
+            --light: #f3f4f6;
+            --gold: #d4af37;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        /* ===== Page 1: Welcome/Question ===== */
+        .page1 {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2d2d2d 100%);
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .page1-content {
+            text-align: center;
+            z-index: 10;
+            animation: slideUp 0.8s ease-out;
+            position: relative;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .moon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            animation: moonGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes moonGlow {
+            0%, 100% { filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5)); }
+            50% { filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.8)); }
+        }
+
+        .question-text {
+            color: var(--gold);
+            font-size: 28px;
+            margin: 30px 0;
+            font-weight: 600;
+            text-shadow: 2px 2px 8px rgba(212, 175, 55, 0.5);
+        }
+
+        .name-input-container {
+            margin: 30px 0;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .name-input {
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 25px;
+            background: white;
+            color: var(--dark);
+            min-width: 200px;
+            font-family: 'Poppins', sans-serif;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .name-input:focus {
+            outline: none;
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .button-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+            position: relative;
+            z-index: 100;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            font-size: 18px;
+            font-weight: 700;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+        }
+
+        .btn-yes {
+            background: var(--gold);
+            color: var(--dark);
+            z-index: 101;
+        }
+
+        .btn-yes:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(251, 191, 36, 0.4);
+        }
+
+        .btn-no {
+            background: #ff6b9d;
+            color: white;
+            position: fixed;
+            z-index: 50;
+            cursor: pointer !important;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            bottom: 40px;
+            left: 40px;
+        }
+
+        .btn-no:hover {
+            box-shadow: 0 10px 25px rgba(255, 107, 157, 0.4);
+        }
+
+        /* ===== Page 2: Greeting ===== */
+        .page2 {
+            width: 100vw;
+            height: 100vh;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2d2d2d 100%);
+            position: relative;
+            animation: pageEnter 1s ease-out;
+            overflow: hidden;
+        }
+
+        @keyframes pageEnter {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .page2.active {
+            display: flex;
+        }
+
+        .page2-content {
+            text-align: center;
+            max-width: 700px;
+            padding: 50px;
+            background: rgba(0, 0, 0, 0.95);
+            border: 3px solid var(--gold);
+            border-radius: 30px;
+            box-shadow: 0 30px 80px rgba(212, 175, 55, 0.4);
+            animation: contentSlideIn 0.8s ease-out;
+            position: relative;
+            z-index: 20;
+            overflow: hidden;
+        }
+
+        @keyframes contentSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .decorative-top {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 120px;
+            opacity: 0.15;
+            z-index: 1;
+        }
+
+        .greeting-emoji {
+            font-size: 100px;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .greeting-title {
+            color: var(--gold);
+            font-size: 52px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            font-family: 'Dancing Script', cursive;
+            text-shadow: 2px 2px 8px rgba(212, 175, 55, 0.6);
+            position: relative;
+            z-index: 2;
+        }
+
+        .greeting-subtitle {
+            color: var(--gold);
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .recipient-name {
+            color: var(--gold);
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 35px;
+            text-shadow: 2px 2px 8px rgba(212, 175, 55, 0.6);
+            animation: nameFloat 2s ease-in-out infinite;
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes nameFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .greeting-wishes {
+            color: #ffffff;
+            font-size: 17px;
+            line-height: 2;
+            margin: 35px 0;
+            padding: 35px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05));
+            border-radius: 20px;
+            border-left: 6px solid var(--gold);
+            border-right: 3px solid rgba(212, 175, 55, 0.5);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2), inset 0 1px 0 rgba(212, 175, 55, 0.1);
+            font-weight: 500;
+            letter-spacing: 0.7px;
+            position: relative;
+            z-index: 2;
+            overflow: hidden;
+        }
+
+        .greeting-wishes::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold), rgba(212, 175, 55, 0.5), var(--gold));
+            animation: shimmerAnim 2s infinite;
+        }
+
+        @keyframes shimmerAnim {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        .wishes-title {
+            color: var(--gold);
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-shadow: 0 2px 8px rgba(212, 175, 55, 0.4);
+        }
+
+        .wishes-line {
+            margin: 10px 0;
+            color: #ffffff;
+            font-size: 16px;
+        }
+
+        .family-wishes {
+            color: #ffffff;
+            font-size: 15px;
+            font-style: italic;
+            margin: 30px 0;
+            padding: 25px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08), rgba(212, 175, 55, 0.03));
+            border-radius: 15px;
+            border-left: 4px solid var(--gold);
+            position: relative;
+            z-index: 2;
+        }
+
+        .decorative-elements {
+            display: flex;
+            justify-content: space-around;
+            margin: 40px 0;
+            font-size: 50px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .decorative-elements span {
+            animation: float 3s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        .decorative-elements span:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        .decorative-elements span:nth-child(3) {
+            animation-delay: 1s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .share-text {
+            color: var(--gold);
+            font-size: 13px;
+            margin-top: 30px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .question-text {
+                font-size: 22px;
+            }
+
+            .greeting-title {
+                font-size: 40px;
+            }
+
+            .recipient-name {
+                font-size: 28px;
+            }
+
+            .greeting-wishes {
+                font-size: 15px;
+                padding: 25px;
+                margin: 25px 0;
+            }
+
+            .page2-content {
+                margin: 20px;
+                padding: 30px 20px;
+                max-width: 90vw;
+            }
+
+            .name-input {
+                min-width: 150px;
+            }
+
+            .btn {
+                padding: 12px 30px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Page 1: Welcome & Question -->
+    <div class="page1" id="page1">
+        <div class="stars" id="starContainer"></div>
+        <div class="page1-content">
+            <div class="moon">🌙</div>
+            <div class="question-text">Kya aap ko Eid Mubarak kehna pasand hai?</div>
+            
+            <div class="name-input-container">
+                <input 
+                    type="text" 
+                    class="name-input" 
+                    id="nameInput" 
+                    placeholder="Apna naam likhen..." 
+                    value=""
+                >
+            </div>
+
+            <div class="button-container">
+                <button class="btn btn-yes" id="yesBtn">Haan, Bilkul!</button>
+            </div>
+        </div>
+        <button class="btn btn-no" id="noBtn">Na, Shukriya</button>
+    </div>
+
+    <!-- Page 2: Greeting -->
+    <div class="page2" id="page2">
+        <div class="page2-content">
+            <div class="decorative-top">🌙</div>
+            
+            <div class="greeting-emoji">✨🌸✨</div>
+            
+            <div class="greeting-title">Eid Mubarak</div>
+            <div class="greeting-subtitle">To You!</div>
+            <div class="recipient-name" id="recipientName">Ahem</div>
+            
+            <div class="greeting-wishes">
+                <div class="wishes-title">✨ Eid Wishes ✨</div>
+                <div class="wishes-line">Aapko aur aap ke ghar walon ko Eid ki bohat bohat mubarak ho. 🌸</div>
+                <div class="wishes-line" style="margin-top: 20px;">Dua hai ke yeh din aap sab ke liye rehmat aur khushiyan laye.</div>
+            </div>
+
+            <div class="family-wishes">
+                💚 Aapki puri family ko Eid Mubarak!
+                <br><br>
+                "Eid ki barkat se pura ghar roshan ho jaye,
+                Har rishta meetha aur har dil muskurahaye."
+            </div>
+
+            <div class="decorative-elements">
+                <span>🎉</span>
+                <span>💚</span>
+                <span>🌟</span>
+            </div>
+
+            <div class="share-text">
+                ✨ Is greeting ko apne pyaaron ke saath share Karen ✨
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create twinkling stars
+        function createStars() {
+            const container = document.getElementById('starContainer');
+            for (let i = 0; i < 50; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.width = Math.random() * 2 + 1 + 'px';
+                star.style.height = star.style.width;
+                star.style.animationDelay = Math.random() * 3 + 's';
+                container.appendChild(star);
+            }
+        }
+
+        createStars();
+
+        const nameInput = document.getElementById('nameInput');
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const page1 = document.getElementById('page1');
+        const page2 = document.getElementById('page2');
+        const recipientName = document.getElementById('recipientName');
+
+        let noButtonClickCount = 0;
+
+        yesBtn.addEventListener('click', function() {
+            const name = nameInput.value.trim() || 'Mere Pyare';
+            recipientName.textContent = name;
+            
+            page1.style.display = 'none';
+            page2.classList.add('active');
+            
+            // Confetti effect
+            createConfetti();
+        });
+
+        noBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            noButtonClickCount++;
+            
+            // Get button dimensions
+            const btnWidth = noBtn.offsetWidth;
+            const btnHeight = noBtn.offsetHeight;
+            const padding = 50;
+            
+            // Safe movement areas - corners aur edges
+            const areas = [
+                // Top-left corner
+                { x: () => Math.random() * 150 + padding, y: () => Math.random() * 150 + padding },
+                // Top-right corner
+                { x: () => window.innerWidth - Math.random() * 150 - btnWidth - padding, y: () => Math.random() * 150 + padding },
+                // Bottom-left corner
+                { x: () => Math.random() * 150 + padding, y: () => window.innerHeight - Math.random() * 150 - btnHeight - padding },
+                // Bottom-right corner
+                { x: () => window.innerWidth - Math.random() * 150 - btnWidth - padding, y: () => window.innerHeight - Math.random() * 150 - btnHeight - padding },
+                // Top edge
+                { x: () => Math.random() * (window.innerWidth - btnWidth - padding * 2) + padding, y: () => Math.random() * 100 + padding },
+                // Bottom edge
+                { x: () => Math.random() * (window.innerWidth - btnWidth - padding * 2) + padding, y: () => window.innerHeight - Math.random() * 100 - btnHeight - padding },
+                // Left edge
+                { x: () => Math.random() * 100 + padding, y: () => Math.random() * (window.innerHeight - btnHeight - padding * 2) + padding },
+                // Right edge
+                { x: () => window.innerWidth - Math.random() * 100 - btnWidth - padding, y: () => Math.random() * (window.innerHeight - btnHeight - padding * 2) + padding }
+            ];
+            
+            // Pick random area
+            const randomArea = areas[Math.floor(Math.random() * areas.length)];
+            const randomX = randomArea.x();
+            const randomY = randomArea.y();
+            
+            noBtn.style.left = randomX + 'px';
+            noBtn.style.top = randomY + 'px';
+            noBtn.style.bottom = 'auto';
+            noBtn.style.transition = `all ${Math.max(0.15, 0.3 - (noButtonClickCount * 0.03))}s cubic-bezier(0.25, 0.46, 0.45, 0.94)`;
+            noBtn.style.transform = `rotate(${Math.random() * 15 - 7.5}deg) scale(1)`;
+            
+            // Fun text messages
+            const messages = [
+                'Oops! 😄',
+                'Bhaag! 🏃',
+                'Pakda! 😁',
+                'Bilkul! 👋',
+                'Ye Haan Daba! 😂',
+                'Pakaar! 🤣',
+                'Shukriya Nahi! 😆',
+                'Chor! 🚨',
+                'Bhaaago! 🏃‍♂️',
+                'Run! 🏃',
+                'Catch! 😂'
+            ];
+            
+            if (noButtonClickCount <= messages.length) {
+                noBtn.textContent = messages[noButtonClickCount - 1];
+            } else {
+                noBtn.textContent = '😂😂😂';
+            }
+            
+            // Scale up Yes button more aggressively
+            if (noButtonClickCount > 1) {
+                const newScale = 1 + (noButtonClickCount * 0.15);
+                yesBtn.style.transform = `scale(${newScale})`;
+                yesBtn.style.boxShadow = `0 ${20 + noButtonClickCount * 8}px ${50 + noButtonClickCount * 15}px rgba(212, 175, 55, 0.7)`;
+            }
+        });
+
+        // Confetti effect
+        function createConfetti() {
+            const colors = ['#d4af37', '#ffd700', '#ffed4e', '#ffffff', '#cccccc'];
+            for (let i = 0; i < 80; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.position = 'fixed';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.top = '-10px';
+                confetti.style.width = (Math.random() * 8 + 5) + 'px';
+                confetti.style.height = confetti.style.width;
+                confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                confetti.style.zIndex = '1000';
+                confetti.style.pointerEvents = 'none';
+                
+                const duration = 2.5 + Math.random() * 1.5;
+                confetti.style.animation = `fall ${duration}s linear forwards`;
+                
+                document.body.appendChild(confetti);
+                
+                setTimeout(() => confetti.remove(), duration * 1000);
+            }
+        }
+
+        // Add confetti animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fall {
+                to {
+                    transform: translateY(100vh) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Allow Enter key to submit
+        nameInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                yesBtn.click();
+            }
+        });
+    </script>
+</body>
+</html>
